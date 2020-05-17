@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Music Artists</string>
     <string name="getdata">Get Data</string>
+    <string name="launcher">Know Your Artist</string>
+    <string name="label">Name of Artist or Album</string>
+    <string name="search">Search</string>
 </resources>
