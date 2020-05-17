@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,21 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getdata(View view) {
-        ApiInterface apiInterface= ApiClient.getRetrofit().create(ApiInterface.class);
-        String name=editText.getText().toString();
-        Toast.makeText(MainActivity.this,name,Toast.LENGTH_LONG).show();
-        Call<Info> call=apiInterface.showdata(name);
-        call.enqueue(new Callback<Info>() {
-            @Override
-            public void onResponse(Call<Info> call, Response<Info> response) {
 
-            }
-
-            @Override
-            public void onFailure(Call<Info> call, Throwable t) {
-                Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     public void showdialog(String Artist, String Albumname)
