@@ -11,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.abachapp.musicartists.Model.Datum;
+import com.abachapp.musicartists.Activity.PlaySample;
+import com.abachapp.musicartists.Model.Deezers.Datum;
 import com.abachapp.musicartists.R;
 import com.google.android.material.card.MaterialCardView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,14 +40,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.CustomViewHolder holder, int position) {
-        holder.textView.setText(datalist.get(position).getTitle());
-        holder.textView1.setText(datalist.get(position).getCompetition().getName());
-        Picasso.get().load(datalist.get(position).getThumbnail()).into(holder.imageView);
+        String Album =datalist.get(position).getAlbum().getTitle();
+        holder.textView.setText(Album);
+        String Artist =datalist.get(position).getArtist().getName();
+        holder.textView1.setText(Artist);
+        String image=datalist.get(position).getAlbum().getCoverBig();
+        Picasso.get().load(image).into(holder.imageView);
+        String url=datalist.get(position).getPreview();
+        String url1=datalist.get(position).getArtist().getPictureSmall();
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent=new Intent(context, play_item.class);
-            intent.putExtra("uri",datalist.get(position).getEmbed());
-            intent.putExtra("title",datalist.get(position).getTitle());
+            Intent intent=new Intent(context,PlaySample.class);
+            intent.putExtra("Album",Album);
+            intent.putExtra("Artist",Artist);
+            intent.putExtra("Image",image);
+            intent.putExtra("Sample",url);
+            intent.putExtra("Sample1",url1);
             context.startActivity(intent);
         });
     }
@@ -66,10 +76,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public CustomViewHolder(View itemView) {
             super(itemView);
             mView=itemView;
-            textView=mView.findViewById(R.id.matchname);
-            textView1=mView.findViewById(R.id.competition);
-            imageView=mView.findViewById(R.id.imageView);
-            materialCardView=mView.findViewById(R.id.materialcardview);
+            textView=mView.findViewById(R.id.albumname);
+            textView1=mView.findViewById(R.id.artistname);
+            imageView=mView.findViewById(R.id.albumimage);
+            materialCardView=mView.findViewById(R.id.material_card);
         }
     }
 }

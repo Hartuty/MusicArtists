@@ -1,4 +1,4 @@
-package com.abachapp.musicartists.Model;
+package com.abachapp.musicartists.Model.Deezers;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
